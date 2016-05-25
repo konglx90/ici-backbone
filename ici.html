@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Backbone.js ici</title>
+    <link rel="stylesheet" href="ici.css"/>
+</head>
+
+<body>
+
+<div id="iciapp">
+
+    <header>
+        <h1>ici</h1>
+        <input id="new-ici" type="text" placeholder="What words do you want to know?">
+    </header>
+
+    <section id="main">
+        <input id="toggle-all" type="checkbox">
+        <label for="toggle-all">Mark all as complete</label>
+        <ul id="ici-result"></ul>
+    </section>
+
+    <footer>
+        <div id="ici-count"></div>
+    </footer>
+
+</div>
+
+<div id="instructions">
+    回车查询
+</div>
+
+<div id="credits">
+    Created by
+    <br/>
+    <a href="http://blog.konglx90.xyz/">konglingxing</a>.
+    <br/>Rewritten by: <a href="https://github.com/konglx90/ici_backbone.git">ici_backbone</a>.
+</div>
+
+<script src="./vendor/json2.js"></script>
+<script src="./vendor/jquery.js"></script>
+<script src="./vendor/underscore.js"></script>
+<script src="./vendor/backbone.js"></script>
+<script src="ici.js"></script>
+
+<!-- Templates -->
+
+<script type="text/template" id="item-template">
+    <div class="view">
+        <div class="view">
+            <div class="query">单词/句子： <%- query %></div>
+            <div class="doc-line"></div>
+            <% if (basic) { %>
+            <div class="poc">读音： <%- basic.phonetic %></div>
+            <div class="meaning">
+                释义：
+                <ul>
+                    <% _.each(basic.explains,function(item){ %>
+                    <li><%= item %></li>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="eg">
+                例句：
+                <ul>
+                    <% _.each(web,function(item){ %>
+                    <li><%= item.key %> ==> <%= item.value[0] %></li>
+                    <% }) %>
+                </ul>
+            </div>
+            <% } %>
+            <div class="translate">翻译： <%- translation %></div>
+        </div>
+    </div>
+</script>
+
+</body>
+</html>
