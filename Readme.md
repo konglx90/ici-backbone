@@ -18,9 +18,11 @@ http://dict-co.iciba.com/api/dictionary.php
     + 例句及翻译
 - 翻译
 - 历史查询记录(TODO)
-- 移动端适配
+- 移动端适配（TODO）
     + 加入查询按钮
     + 响应式
+- 使用Grunt来构建项目， 完成一些自动化过程（TODO）
+- 
 
 ### 波折
 
