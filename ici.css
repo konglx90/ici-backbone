@@ -30,7 +30,7 @@ body {
 	border-radius: 0 0 5px 5px;
 }
 
-#iciapp h1 {
+#iciapp h1{
 	font-size: 36px;
 	font-weight: bold;
 	text-align: center;
@@ -159,4 +159,18 @@ ul{
 
 #js-button-query{
 	vertical-align: top;
+}
+
+.btn {
+	width: 70px;
+}
+
+@media screen and (max-width: 800px){
+    body {margin: 0; width: inherit;}
+	.search{
+		font-size: 36px;
+		font-weight: bold;
+		text-align: center;
+		padding: 0 0 10px 0;
+	}
 }

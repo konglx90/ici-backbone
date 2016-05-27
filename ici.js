@@ -84,12 +84,14 @@ $(function(){
 
         // If you hit `enter` or `click`, we're through editing the item.
         queryOnEnterOrClick: function(e) {
+            var one_query = query.val();
+            if(one_query === '') return;
             if (e.keyCode == 13 || e.type == 'click') {
                 $.ajax({
                     type: "GET",
                     dataType: "jsonp",
                     jsonpCallback: "klx",
-                    url: "http://fanyi.youdao.com/openapi.do?keyfrom=love-ici&key=1848391244&type=data&doctype=jsonp&version=1.1&q=" + query.val(),
+                    url: "http://fanyi.youdao.com/openapi.do?keyfrom=love-ici&key=1848391244&type=data&doctype=jsonp&version=1.1&q=" + one_query,
                     success: function (data) {
                         footer.css('display', "block");
                         if(window.answer.basic===undefined){
