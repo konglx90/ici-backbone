@@ -39,7 +39,5 @@ http://dict-co.iciba.com/api/dictionary.php
 ### 效果图
 ![翻译](https://raw.githubusercontent.com/konglx90/ici_backbone/master/static/ici.png)
 
----
-
 ![单词查询](https://raw.githubusercontent.com/konglx90/ici_backbone/master/static/ici.png "单词查询")
 
