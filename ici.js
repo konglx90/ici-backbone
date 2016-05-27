@@ -72,7 +72,8 @@ $(function(){
 
         // The DOM events specific to an item.
         events: {
-            "keypress #new-ici"  : "queryOnEnter"
+            "keypress #new-ici"  : "queryOnEnterOrClick",
+            "click #js-button-query": "queryOnEnterOrClick"
         },
 
         initialize: function() {
@@ -80,14 +81,10 @@ $(function(){
             //this.footer = $("footer");
         },
 
-        //render: function(){
-        //    this.footer.html(this.template({'key': "ok"}))
-        //},
 
-        // If you hit `enter`, we're through editing the item.
-        queryOnEnter: function(e) {
-
-            if (e.keyCode == 13) {
+        // If you hit `enter` or `click`, we're through editing the item.
+        queryOnEnterOrClick: function(e) {
+            if (e.keyCode == 13 || e.type == 'click') {
                 $.ajax({
                     type: "GET",
                     dataType: "jsonp",
@@ -95,11 +92,9 @@ $(function(){
                     url: "http://fanyi.youdao.com/openapi.do?keyfrom=love-ici&key=1848391244&type=data&doctype=jsonp&version=1.1&q=" + query.val(),
                     success: function (data) {
                         footer.css('display', "block");
-                        console.log(window.answer)
                         if(window.answer.basic===undefined){
                             window.answer["basic"] = false;
                         }
-                        console.log(window.answer)
                         one_ici.set(window.answer)
                         footer.html(_.template($('#item-template').html())(one_ici.attributes))
                     },

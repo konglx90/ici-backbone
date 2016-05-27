@@ -38,7 +38,7 @@ body {
 }
 
 #iciapp input[type="text"] {
-	width: 466px;
+	width: 406px;
 	font-size: 24px;
 	font-family: inherit;
 	line-height: 1.4em;
@@ -155,4 +155,8 @@ body {
 
 ul{
 	margin: 0;
+}
+
+#js-button-query{
+	vertical-align: top;
 }
