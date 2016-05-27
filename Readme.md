@@ -37,9 +37,9 @@ http://dict-co.iciba.com/api/dictionary.php
 ```http://fanyi.youdao.com/openapi.do?keyfrom=love-ici&key=1848391244&type=data&doctype=jsonp&version=1.1&q=API```
 
 ### 效果图
-![Alt text](./static/ici.png "句子翻译")
+![翻译](https://raw.githubusercontent.com/konglx90/ici_backbone/master/static/ici.png)
 
 ---
 
-![Alt text](./static/ici2.png "单词查询")
+![单词查询](https://raw.githubusercontent.com/konglx90/ici_backbone/master/static/ici.png "单词查询")
 
