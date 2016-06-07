@@ -2,15 +2,15 @@
  * Created by kong90 on 16-5-25.
  */
 
-// 使用jquery, 页面加载完成
-$(function(){
+define(['vendor/jquery', 'vendor/underscore', 'vendor/backbone'], function (jquery, underscore, backbone) {
+    "use strict";
 
-    var query =  $('#new-ici');
+    var query = $('#new-ici');
     var footer = $('footer');
 
     // 小应用, 为方便
     window.answer = {};
-    window.klx = function(data){
+    window.klx = function (data) {
         window.answer = data;
     }
 
@@ -20,7 +20,7 @@ $(function(){
     // Our basic
     var ici = Backbone.Model.extend({
 
-        default: function(){
+        default: function () {
             return {
                 translation: ["你好"],
                 basic: {
@@ -30,28 +30,28 @@ $(function(){
                     phonetic: "hə'ləʊ; he-",
                     "uk-phonetic": "hə'ləʊ; he-",
                     "us-speech": "hello&type=2",
-                    explains: ["n. 表示问候， 惊奇或唤起注意时的用语",  "int. 喂；哈罗", "n. (Hello)人名；(法)埃洛"]
+                    explains: ["n. 表示问候， 惊奇或唤起注意时的用语", "int. 喂；哈罗", "n. (Hello)人名；(法)埃洛"]
                 },
                 query: "hello",
                 errorCode: 0,
                 web: [
-                {
-                    value: ["你好", "您好", "hello"],
-                    key: "Hello"
-                },
-                {
-                    value: ["凯蒂猫", "昵称", "匿称"],
-                    key: "Hello Kitty"
-                },
-                {
-                    value: ["哈乐哈乐", "乐扣乐扣"],
-                    key: "Hello Bebe"
-                }
+                    {
+                        value: ["你好", "您好", "hello"],
+                        key: "Hello"
+                    },
+                    {
+                        value: ["凯蒂猫", "昵称", "匿称"],
+                        key: "Hello Kitty"
+                    },
+                    {
+                        value: ["哈乐哈乐", "乐扣乐扣"],
+                        key: "Hello Bebe"
+                    }
                 ]
             }
         },
 
-        toggle: function(){
+        toggle: function () {
             this.save({done: true})
         }
     });
@@ -72,20 +72,20 @@ $(function(){
 
         // The DOM events specific to an item.
         events: {
-            "keypress #new-ici"  : "queryOnEnterOrClick",
+            "keypress #new-ici": "queryOnEnterOrClick",
             "click #js-button-query": "queryOnEnterOrClick"
         },
 
-        initialize: function() {
+        initialize: function () {
             console.log("initialize in ici_view");
             //this.footer = $("footer");
         },
 
 
         // If you hit `enter` or `click`, we're through editing the item.
-        queryOnEnterOrClick: function(e) {
+        queryOnEnterOrClick: function (e) {
             var one_query = query.val();
-            if(one_query === '') return;
+            if (one_query === '') return;
             if (e.keyCode == 13 || e.type == 'click') {
                 $.ajax({
                     type: "GET",
@@ -94,7 +94,7 @@ $(function(){
                     url: "http://fanyi.youdao.com/openapi.do?keyfrom=love-ici&key=1848391244&type=data&doctype=jsonp&version=1.1&q=" + one_query,
                     success: function (data) {
                         footer.css('display', "block");
-                        if(window.answer.basic===undefined){
+                        if (window.answer.basic === undefined) {
                             window.answer["basic"] = false;
                         }
                         one_ici.set(window.answer)
