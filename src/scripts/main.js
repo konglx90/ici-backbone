@@ -71,9 +71,8 @@ define(['../bower_components/jquery/dist/jquery',
             },
 
             saveToLocalStorage: function(){
-                console.log(this.attributes);
                 if (window.localStorage){
-                    window.localStorage.setItem('ici-'+this.attributes.query, this.attributes);
+                    window.localStorage.setItem('ici-'+this.attributes.query, JSON.stringify(this.attributes));
                 }
             }
 
@@ -81,7 +80,10 @@ define(['../bower_components/jquery/dist/jquery',
 
         // 历史记录的Query
         var QueryHistory = Backbone.Collection.extend({
-            model: query_history
+            model: query_history,
+            comparator : function( model ){
+                return -model.get("queryTime");
+            }
         });
 
         // ici view
@@ -95,17 +97,22 @@ define(['../bower_components/jquery/dist/jquery',
 
             // The DOM events specific to an item.
             events: {
-                "keypress #new-ici": "queryOnEnterOrClick",
-                "click #js-button-query": "queryOnEnterOrClick"
+                'click .js-query-history': 'showQueryHistory',
+                'keypress #new-ici': 'queryOnEnterOrClick',
+                'click #js-button-query': 'queryOnEnterOrClick'
             },
 
             initialize: function () {
                 console.log("********initialize in ici_view********");
 
                 this.querys = new QueryHistory;
-                this.querys.comparator = 'queryTime';
-
-                console.log(this.querys.length);
+                if (window.localStorage) {
+                    for (var pro in localStorage) {
+                        if (localStorage.hasOwnProperty(pro) && pro.match('ici-*')) {
+                            this.querys.add(JSON.parse(localStorage[pro]))
+                        }
+                    }
+                }
 
             },
 
@@ -129,20 +136,22 @@ define(['../bower_components/jquery/dist/jquery',
                             if (window.answer.basic === undefined) {
                                 window.answer["basic"] = false;
                             }
+
+                            window.answer['queryTime'] = Date.now();
                             one_ici.set(window.answer);
                             footer.html(_.template($('#item-template').html())(one_ici.attributes));
 
-                            one_query_history.set(
-                                {
-                                    query: one_ici.get('query'),
-                                    explain: one_ici.get('explains')[0],
-                                    queryTime: one_ici.get('queryTime')
-                                }
-                            );
-                            one_query_history.saveToLocalStorage();
-
-                            // 加入历史记录
-                            that.querys.add(one_ici);
+                            if (window.answer['basic'] !== false) {
+                                one_query_history.set(
+                                    {
+                                        query: one_ici.get('query'),
+                                        explain: one_ici.get('basic')['explains'][0],
+                                        queryTime: one_ici.get('queryTime')
+                                    }
+                                );
+                                that.querys.add(one_query_history);
+                                one_query_history.saveToLocalStorage();
+                            }
 
                         },
                         error: function (error) {
@@ -150,7 +159,24 @@ define(['../bower_components/jquery/dist/jquery',
                         }
                     })
                 }
+            },
+
+            showQueryHistory: function(e) {
+                var that = this;
+
+                if (window.localStorage){
+                    if (that.querys.length === 0){
+                        alert('No History');
+                        return;
+                    }
+
+                    footer.css('display', "block");
+                    footer.html(_.template($('#query-history-template').html())({querys: JSON.parse(JSON.stringify(that.querys))}));
+                } else {
+                    alert('No LocalStorage');
+                }
             }
+
         });
 
         var App = new IciView;

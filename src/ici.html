@@ -23,6 +23,7 @@
                 <span class="glyphicon glyphicon-search"></span>
             </button>
         </div>
+        <a class="query-history js-query-history" href="javascript:void(0);">历史查询</a>
     </header>
 
     <section id="main">
@@ -34,12 +35,9 @@
     <footer>
         <div id="ici-count"></div>
     </footer>
-
 </div>
 
-<div id="instructions">
-    回车查询
-</div>
+<p id="instructions">回车查询</p>
 
 <div id="credits">
     Created by
@@ -53,30 +51,39 @@
 
 <script type="text/template" id="item-template">
     <div class="view">
-        <div class="view">
-            <div class="query">单词/句子： <%- query %></div>
-            <div class="doc-line"></div>
-            <% if (basic) { %>
-            <div class="poc">读音： <%- basic.phonetic %></div>
-            <div class="meaning">
-                释义：
-                <ul>
-                    <% _.each(basic.explains,function(item){ %>
-                    <li><%= item %></li>
-                    <% }) %>
-                </ul>
-            </div>
-            <div class="eg">
-                例句：
-                <ul>
-                    <% _.each(web,function(item){ %>
-                    <li><%= item.key %> ==> <%= item.value[0] %></li>
-                    <% }) %>
-                </ul>
-            </div>
-            <% } %>
-            <div class="translate">翻译： <%- translation %></div>
+        <div class="query">单词/句子： <%- query %></div>
+        <div class="doc-line"></div>
+        <% if (basic) { %>
+        <div class="poc">读音： <%- basic.phonetic %></div>
+        <div class="meaning">
+            释义：
+            <ul>
+                <% _.each(basic.explains,function(item){ %>
+                <li><%= item %></li>
+                <% }) %>
+            </ul>
         </div>
+        <div class="eg">
+            例句：
+            <ul>
+                <% _.each(web,function(item){ %>
+                <li><%= item.key %> ==> <%= item.value[0] %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <% } %>
+        <div class="translate">翻译： <%- translation %></div>
+    </div>
+</script>
+
+<!--查询历史的template-->
+<script type="text/template" id="query-history-template">
+    <div class="query-view">
+        <ul>
+            <% _.each(querys, function(item){ %>
+            <p class="query"><%= item.query %>: <%= item.explain %></p>
+            <% }) %>
+        </ul>
     </div>
 </script>
 

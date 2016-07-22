@@ -42,7 +42,6 @@ body {
     font-size: 24px;
     font-family: inherit;
     line-height: 1.4em;
-    border: 0;
     outline: none;
     padding: 6px;
     border: 1px solid #999999;
@@ -94,7 +93,7 @@ body {
 }
 
 #credits {
-    margin: 30px auto;
+    margin: 10px auto;
     color: #999;
     text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
     text-align: center;
@@ -116,8 +115,10 @@ body {
     text-align: center;
 }
 
-ul {
+ul,
+li{
     margin: 0;
+    padding: 0;
 }
 
 #js-button-query {
@@ -147,4 +148,23 @@ ul {
     .glyphicon {
         margin: 0 auto;
     }
+}
+
+/****查询历史****/
+
+.query-history {
+    margin: 20px auto 0;
+    color: #777777;
+    text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
+    text-align: center;
+    display: inherit;
+}
+
+.query-history:hover {
+    text-decoration: none;
+}
+
+.query-view .query {
+    font-size: 14px;
+    margin: 0;
 }
