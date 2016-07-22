@@ -2,13 +2,15 @@
 
 ### 调用接口
 
-http://dict-co.iciba.com/api/dictionary.php
+~~http://dict-co.iciba.com/api/dictionary.php~0~
  
 ### 基本页面来自backbone的官方例子todos
 
 - 采用HTML5标签
-- localStorage(TODO)
+- localStorage
 - jsonp跨域
+- gulp
+- requirejs
 
 ### 基本功能
 
@@ -17,12 +19,12 @@ http://dict-co.iciba.com/api/dictionary.php
     + 词性
     + 例句及翻译
 - 翻译
-- 历史查询记录(TODO)
-- 移动端适配（TODO）
+- 历史查询记录
+- 移动端适配
     + 加入查询按钮
     + 响应式
 - 使用Grunt来构建项目， 完成一些自动化过程（TODO）
-- 
+- 检测是否使用 localStorage
 
 ### 效果
 
