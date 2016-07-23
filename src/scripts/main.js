@@ -61,7 +61,7 @@ define(['../bower_components/jquery/dist/jquery',
             }
         });
 
-        var query_history  = Backbone.Model.extend({
+        var query_history = Backbone.Model.extend({
 
             default: function () {
                 return {
@@ -71,20 +71,20 @@ define(['../bower_components/jquery/dist/jquery',
                 }
             },
 
-            saveToLocalStorage: function(){
+            saveToLocalStorage: function () {
                 var query_history;
-                if (window.localStorage){
+                if (window.localStorage) {
 
                     //  Assume read history is more than save(the fact is reverse),  add count-ici for quick query
                     var counts = localStorage.getItem('count-ici');
                     if (counts === undefined) {
                         localStorage.setItem('count-ici', 1)
-                    }else if (counts === LIMIT_OF_QUERY_HISTORY){
+                    } else if (counts === LIMIT_OF_QUERY_HISTORY) {
                         query_history = new QueryHistory;
                         query_history.getLastAndRemoveIt();
                     }
 
-                    localStorage.setItem('ici-'+this.attributes.query, JSON.stringify(this.attributes));
+                    localStorage.setItem('ici-' + this.attributes.query, JSON.stringify(this.attributes));
                 }
             }
 
@@ -93,11 +93,11 @@ define(['../bower_components/jquery/dist/jquery',
         // The Collection of query history
         var QueryHistory = Backbone.Collection.extend({
             model: query_history,
-            comparator : function( model ){
+            comparator: function (model) {
                 return -model.get("queryTime");
             },
 
-            getDataFromLocalStorage: function(){
+            getDataFromLocalStorage: function () {
                 var that = this;
                 if (window.localStorage) {
                     for (var pro in localStorage) {
@@ -108,14 +108,14 @@ define(['../bower_components/jquery/dist/jquery',
                 }
             },
 
-            getLastAndRemoveIt: function(){
+            getLastAndRemoveIt: function () {
                 var that = this;
                 var old_query_time = Date.now();
                 var oldest_index;
                 if (window.localStorage) {
                     for (var pro in localStorage) {
                         if (localStorage.hasOwnProperty(pro) && pro.match('ici-*')) {
-                            if (JSON.parse(localStorage[pro])['queryTime'] < old_query_time){
+                            if (JSON.parse(localStorage[pro])['queryTime'] < old_query_time) {
                                 old_query_time = JSON.parse(localStorage[pro])['queryTime'];
                                 oldest_index = pro;
                             }
@@ -200,11 +200,11 @@ define(['../bower_components/jquery/dist/jquery',
             },
 
             // show query history by click
-            showQueryHistory: function(e) {
+            showQueryHistory: function (e) {
                 var that = this;
 
-                if (window.localStorage){
-                    if (that.querys.length === 0){
+                if (window.localStorage) {
+                    if (that.querys.length === 0) {
                         alert('No History');
                         return;
                     }
