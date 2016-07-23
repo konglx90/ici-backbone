@@ -1,0 +1,99 @@
+/****search****/
+#ici-app {
+  background: $color-ici-background;
+  padding: $padding-ici;
+  margin-bottom: $margin-bottom-ici;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+  -webkit-border-radius: 0 0 $radius-base $radius-base;
+  -moz-border-radius: 0 0 $radius-base $radius-base;
+  -ms-border-radius: 0 0 $radius-base $radius-base;
+  -o-border-radius: 0 0 $radius-base $radius-base;
+  border-radius: 0 0 $radius-base $radius-base;
+
+  h1 {
+    font-size: $font-ici-h1;
+    font-weight: bold;
+    text-align: center;
+    padding: 0 0 $padding-bottom-ici-h1 0;
+  }
+
+  input[type="text"] {
+    width: $width-ici-input;
+    font-size: $font-ici-input;
+    font-family: inherit;
+    line-height: 1.4em;
+    outline: none;
+    padding: $padding-ici-input;
+    border: $border-ici-input;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  }
+
+  input::-webkit-input-placeholder {
+    font-style: italic;
+  }
+
+  .btn {
+    width: $width-btn;
+  }
+
+  #js-button-query {
+    vertical-align: top;
+  }
+
+  #main {
+    display: none;
+  }
+
+  footer {
+    display: none;
+    margin: 0 $margin-ici-footer $margin-ici-footer $margin-ici-footer;
+    overflow: hidden;
+    color: #555555;
+    background: #f4fce8;
+    border-top: $border-top-ici-footer;
+    padding: 0 $padding-ici;
+    line-height: $height-line-ici-footer;
+    -webkit-border-radius: 0 0 $radius-base $radius-base;
+    -moz-border-radius: 0 0 $radius-base $radius-base;
+    -ms-border-radius: 0 0 $radius-base $radius-base;
+    -o-border-radius: 0 0 $radius-base $radius-base;
+    border-radius: 0 0 $radius-base $radius-base;
+  }
+}
+
+.view {
+  .query {
+    text-align: center;
+  }
+  .doc-line {
+    height: 1px;
+    border-top: $border-doc-line;
+    text-align: center;
+  }
+}
+
+.query-history {
+  margin: $margin-query-history;
+  display: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.query-view {
+  ul {
+    padding: 0;
+  }
+  .query {
+    margin: 0;
+  }
+}

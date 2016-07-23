@@ -1,0 +1,21 @@
+@media screen and (max-width: $width-responsive) {
+  body {
+    margin: 0 auto;
+    width: inherit;
+
+    #ici-app {
+      .search {
+        width: 100%;
+      }
+
+      input[type="text"] {
+        width: 80%;
+      }
+
+      button {
+        width: 18%;
+      }
+
+    }
+  }
+}

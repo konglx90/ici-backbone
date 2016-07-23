@@ -1,0 +1,37 @@
+/****reset start****/
+html,
+body,
+ul,
+li {
+  margin: 0;
+}
+
+html,
+body{
+  padding: 0;
+}
+
+/**** reset end ****/
+
+/**** base ****/
+body {
+  font: $font-base "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background: $color-base-background;
+  color: $color-base;
+  width: $width-body;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+
+  .center-text {
+    margin: $margin-center-text;
+    text-shadow: $text-shadow-base;
+    text-align: center;
+    color: #999;
+  }
+
+  .a-link {
+    color: $color-base-a-link;
+  }
+
+}
