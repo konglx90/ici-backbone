@@ -1,3 +1,4 @@
+/****reset and base****/
 html,
 body {
     margin: 0;
@@ -14,7 +15,8 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-#iciapp {
+/****search ****/
+#ici-app {
     background: #fff;
     padding: 20px;
     margin-bottom: 40px;
@@ -30,14 +32,14 @@ body {
     border-radius: 0 0 5px 5px;
 }
 
-#iciapp h1 {
+#ici-app h1 {
     font-size: 36px;
     font-weight: bold;
     text-align: center;
     padding: 0 0 10px 0;
 }
 
-#iciapp input[type="text"] {
+#ici-app input[type="text"] {
     width: 406px;
     font-size: 24px;
     font-family: inherit;
@@ -52,7 +54,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
 }
 
-#iciapp input::-webkit-input-placeholder {
+#ici-app input::-webkit-input-placeholder {
     font-style: italic;
 }
 
@@ -60,7 +62,7 @@ body {
     display: none;
 }
 
-#iciapp footer {
+#ici-app footer {
     display: none;
     margin: 0 -20px -20px -20px;
     overflow: hidden;
@@ -81,15 +83,11 @@ body {
     font-weight: bold;
 }
 
-#instructions {
+.center-text {
     margin: 10px auto;
     color: #777777;
     text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
     text-align: center;
-}
-
-#instructions a {
-    color: #336699;
 }
 
 #credits {
@@ -118,7 +116,6 @@ body {
 ul,
 li{
     margin: 0;
-    padding: 0;
 }
 
 #js-button-query {
@@ -135,14 +132,14 @@ li{
         width: inherit;
     }
 
-    #iciapp, .search {
+    #ici-app, .search {
         width: 100%;
     }
 
-    #iciapp input[type="text"] {
+    #ici-app input[type="text"] {
         width: 80%;
     }
-    #iciapp button{
+    #ici-app button{
         width: 18%;
     }
     .glyphicon {
@@ -152,12 +149,16 @@ li{
 
 /****查询历史****/
 
-.query-history {
+.query-history{
     margin: 20px auto 0;
     color: #777777;
     text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
     text-align: center;
     display: inherit;
+}
+
+.query-view ul{
+    padding: 0;
 }
 
 .query-history:hover {

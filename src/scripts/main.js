@@ -131,7 +131,7 @@ define(['../bower_components/jquery/dist/jquery',
         // ici view
         var IciView = Backbone.View.extend({
 
-            el: $("#iciapp"),
+            el: $("#ici-app"),
 
             tagName: "div",
 

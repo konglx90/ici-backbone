@@ -49,3 +49,6 @@
 ```http://fanyi.youdao.com/openapi.do?keyfrom=love-ici&key=1848391244&type=data&doctype=jsonp&version=1.1&q=API```
 
 
+## 命名规范
+id class 使用中划线
+
