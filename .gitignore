@@ -2,4 +2,5 @@
 node_modules/
 build/
 .tmp/
+src/bower_components/
 
