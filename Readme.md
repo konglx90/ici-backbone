@@ -26,8 +26,9 @@
 - 使用Glup来构建项目， 完成一些自动化过程（TODO）
 - 检测是否使用 localStorage
 - css 重构 使用SCSS(TODO)
-- 超过50条历史记录删除前面的(TODO)
+- 超过50条历史记录删除前面的
 - 智能搜索(TODO)
+- ES6 重构 const let map 等(TODO)
 
 ### 效果
 

@@ -10,6 +10,7 @@ define(['../bower_components/jquery/dist/jquery',
 
         var query = $('#new-ici');
         var footer = $('footer');
+        var LIMIT_OF_QUERY_HISTORY = 50;
 
         // 小应用, 为方便
         window.answer = {};
@@ -71,19 +72,60 @@ define(['../bower_components/jquery/dist/jquery',
             },
 
             saveToLocalStorage: function(){
+                var query_history;
                 if (window.localStorage){
-                    window.localStorage.setItem('ici-'+this.attributes.query, JSON.stringify(this.attributes));
+
+                    //  Assume read history is more than save(the fact is reverse),  add count-ici for quick query
+                    var counts = localStorage.getItem('count-ici');
+                    if (counts === undefined) {
+                        localStorage.setItem('count-ici', 1)
+                    }else if (counts === LIMIT_OF_QUERY_HISTORY){
+                        query_history = new QueryHistory;
+                        query_history.getLastAndRemoveIt();
+                    }
+
+                    localStorage.setItem('ici-'+this.attributes.query, JSON.stringify(this.attributes));
                 }
             }
 
         });
 
-        // 历史记录的Query
+        // The Collection of query history
         var QueryHistory = Backbone.Collection.extend({
             model: query_history,
             comparator : function( model ){
                 return -model.get("queryTime");
+            },
+
+            getDataFromLocalStorage: function(){
+                var that = this;
+                if (window.localStorage) {
+                    for (var pro in localStorage) {
+                        if (localStorage.hasOwnProperty(pro) && pro.match('ici-*')) {
+                            that.add(JSON.parse(localStorage[pro]))
+                        }
+                    }
+                }
+            },
+
+            getLastAndRemoveIt: function(){
+                var that = this;
+                var old_query_time = Date.now();
+                var oldest_index;
+                if (window.localStorage) {
+                    for (var pro in localStorage) {
+                        if (localStorage.hasOwnProperty(pro) && pro.match('ici-*')) {
+                            if (JSON.parse(localStorage[pro])['queryTime'] < old_query_time){
+                                old_query_time = JSON.parse(localStorage[pro])['queryTime'];
+                                oldest_index = pro;
+                            }
+                        }
+                    }
+                    localStorage.removeItem(oldest_index);
+                }
+                return oldest_index;
             }
+
         });
 
         // ici view
@@ -106,13 +148,7 @@ define(['../bower_components/jquery/dist/jquery',
                 console.log("********initialize in ici_view********");
 
                 this.querys = new QueryHistory;
-                if (window.localStorage) {
-                    for (var pro in localStorage) {
-                        if (localStorage.hasOwnProperty(pro) && pro.match('ici-*')) {
-                            this.querys.add(JSON.parse(localStorage[pro]))
-                        }
-                    }
-                }
+                this.querys.getDataFromLocalStorage();
 
             },
 
@@ -132,15 +168,17 @@ define(['../bower_components/jquery/dist/jquery',
                         jsonpCallback: "klx",
                         url: "http://fanyi.youdao.com/openapi.do?keyfrom=love-ici&key=1848391244&type=data&doctype=jsonp&version=1.1&q=" + one_query,
                         success: function (data) {
+
+                            // show query result
                             footer.css('display', "block");
                             if (window.answer.basic === undefined) {
                                 window.answer["basic"] = false;
                             }
-
                             window.answer['queryTime'] = Date.now();
                             one_ici.set(window.answer);
                             footer.html(_.template($('#item-template').html())(one_ici.attributes));
 
+                            // console query history
                             if (window.answer['basic'] !== false) {
                                 one_query_history.set(
                                     {
@@ -161,6 +199,7 @@ define(['../bower_components/jquery/dist/jquery',
                 }
             },
 
+            // show query history by click
             showQueryHistory: function(e) {
                 var that = this;
 
