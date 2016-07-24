@@ -2,7 +2,7 @@
 
 ### 调用接口
 
-~~http://dict-co.iciba.com/api/dictionary.php~0~
+~~http://dict-co.iciba.com/api/dictionary.php0~~
  
 ### 基本页面来自backbone的官方例子todos
 
@@ -23,11 +23,11 @@
 - 移动端适配
     + 加入查询按钮
     + 响应式
-- 使用Glup来构建项目， 完成一些自动化过程（TODO）
+- 使用Glup来构建项目， 完成一些自动化过程（ADD）
 - 检测是否使用 localStorage
-- css 重构 使用SCSS(TODO)
+- css 重构 使用SCSS
 - 超过50条历史记录删除前面的
-- 智能搜索(TODO)
+- 智能搜索, 自动补全(TODO)
 - ES6 重构 const let map 等(TODO)
 - 依照一定的命名规范修改变量函数名(TODO)
 
