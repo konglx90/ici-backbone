@@ -23,9 +23,20 @@
 
   .search {
     text-align: center;
+    .auto-complete {
+      width: $width-ici-input;
+      background-color: $color-auto-complete;
+      border: 1px darkcyan solid;
+      ul.auto-complete-b {
+        li {
+          list-style: none;
+        }
+      }
+    }
   }
 
   input[type="text"] {
+    float: left;
     width: $width-ici-input;
     font-size: $font-ici-input;
     font-family: inherit;
