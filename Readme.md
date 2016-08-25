@@ -38,7 +38,6 @@
 
 ### 波折
 
-```<script type="text/javascript" src="http://dict-co.iciba.com/api/dictionary.php?key=E0F0D336AF47D3797C68372A869BDBC5&w=good&callback=console.log"></script>```
 
 - 原接口不支持jsonp，而是直接返回json数据，应该返回callback(data)
 
